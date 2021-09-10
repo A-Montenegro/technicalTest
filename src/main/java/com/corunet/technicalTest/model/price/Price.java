@@ -27,11 +27,27 @@ public class Price {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    private LocalDateTime start_date;
-    private LocalDateTime end_date;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
     private Integer priority;
     private BigDecimal price;
     private String curr;
+
+    public Price() {
+
+    }
+
+    public Price(Long id, Brand brand, PriceRate priceRate, Product product, LocalDateTime startDate, LocalDateTime endDate, Integer priority, BigDecimal price, String curr) {
+        this.id = id;
+        this.brand = brand;
+        this.priceRate = priceRate;
+        this.product = product;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.priority = priority;
+        this.price = price;
+        this.curr = curr;
+    }
 
     public Long getId() {
         return id;
@@ -49,12 +65,12 @@ public class Price {
         return product;
     }
 
-    public LocalDateTime getStart_date() {
-        return start_date;
+    public LocalDateTime getStartDate() {
+        return startDate;
     }
 
-    public LocalDateTime getEnd_date() {
-        return end_date;
+    public LocalDateTime getEndDate() {
+        return endDate;
     }
 
     public Integer getPriority() {
@@ -67,5 +83,41 @@ public class Price {
 
     public String getCurr() {
         return curr;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
+    public void setPriceRate(PriceRate priceRate) {
+        this.priceRate = priceRate;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
+    }
+
+    public void setPriority(Integer priority) {
+        this.priority = priority;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public void setCurr(String curr) {
+        this.curr = curr;
     }
 }

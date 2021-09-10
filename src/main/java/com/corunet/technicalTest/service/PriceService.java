@@ -1,24 +1,20 @@
 package com.corunet.technicalTest.service;
 
-import com.corunet.technicalTest.model.price.Price;
+import com.corunet.technicalTest.dto.PriceDto;
 import com.corunet.technicalTest.model.price.PriceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
+import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 
 @Service
+@Transactional
 public class PriceService {
 
     @Autowired
     private PriceRepository priceRepository;
 
-    public Price getOne(Long id){
-        return priceRepository.findById(id).get();
-    }
-
-    public List<Price> findAll(){
-
-        return priceRepository.findAll();
+    public PriceDto findByCriteria(Long productId, Long brandId, LocalDateTime applicationDate) {
+        return new PriceDto(priceRepository.findFirstByProductIdAndBrandIdAndStartDateBeforeAndEndDateAfterOrderByPriorityDesc(productId, brandId, applicationDate, applicationDate));
     }
 }
